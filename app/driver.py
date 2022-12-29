@@ -1,4 +1,4 @@
-from app.app import Application
+from app.app import Application, ANSI
 from app.timer import timer
 from datetime import datetime
 
@@ -9,12 +9,21 @@ def driver(discord_login, time):
         print("\nStarting process..")
         result = main.start()
         if result == True:
-            print(f"{str(datetime.now())[:19]} completed successfully! :)")
+            print(f"{str(datetime.now())[:19]} " 
+                  + ANSI.color_text(32) + 
+                  "completed successfully! :)" 
+                  + ANSI.color_text(0))
             timer(time)
         else:
-            print(f"{str(datetime.now())[:19]} one error occurred... :(")
+            print(f"{str(datetime.now())[:19]} " 
+                  + ANSI.color_text(31) + 
+                  "one error occurred, cannot bumped! :(" 
+                  + ANSI.color_text(0))
             timer(10)
+        main.quit()
     except:
-        print("oops! Something went wrong..")
+        print(ANSI.color_text(31) + 
+              "oops! Something went wrong.." 
+              + ANSI.color_text(0))
         timer(10)
         pass

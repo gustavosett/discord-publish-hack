@@ -2,6 +2,8 @@ from undetected_chromedriver import Chrome, ChromeOptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from time import sleep
+from app.ansi import ANSI
+
 
 class Application:
     
@@ -17,13 +19,16 @@ class Application:
         
     def start(self):
         try:
-            print(f"logging into {self.email}...")
+            print("logging into " + ANSI.color_text("34") + f"{self.email}" + ANSI.color_text("0"))
             self.log_in_discord()
             print("logging into disboard...")
             self.log_in_disboard()
             print("bumpping server...")
             bump_bool_result = self.bump_server()
             if not bump_bool_result:
+                return False
+            error = self.driver.find_element(By.CLASS_NAME, "notie-textbox notie-background-error notie-alert notie-container")
+            if error:
                 return False
             return True
         except:
@@ -76,8 +81,8 @@ class Application:
         except:
             return False
     
-    def close(self):
+    def quit(self):
         try:
-            self.driver.close()
+            self.driver.quit()
         except:
             pass
