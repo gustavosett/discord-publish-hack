@@ -40,6 +40,8 @@ For those who always wanted a discord with many members, this automation will pu
 ![Prompt Image](https://i.imgur.com/JS8CTiF.png)
 
 # And... VOILÀ!
+![PromptResult Image](https://i.imgur.com/wNRhVDM.png)
+![Result Image](https://i.imgur.com/VK8FlIn.png)
 
 
 
